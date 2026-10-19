@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema TMS para transportadoras | A2O Sistemas</title>
+<meta name="description" content="Sistema TMS para transportadoras com emissão de CT-e, MDF-e, CIOT e NFS-e, operação, financeiro e plantão técnico 24h. Agende uma demonstração.">
+<!-- Protótipo no GitHub Pages: remover o noindex na publicação final -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#06121f">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- GTM: inserir aqui, assíncrono, com Consent Mode v2 -->
+<style>
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(assets/fonts/figtree-latin.woff2) format("woff2")}
+
+:root{
+  --bg:#06121f;
+  --bg-2:#0a1b2d;
+  --panel:#0c2033;
+  --panel-2:#10283f;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --text:#e9f1f8;
+  --muted:#93a8bc;
+  --dim:#5f7891;
+  --accent:#1fb0f4;
+  --accent-2:#74a4d0;
+  --accent-ink:#04121f;
+  --ok:#2bd17e;
+  --warn:#f5a524;
+  --danger:#f2645a;
+  --navy:#002742;
+  --radius:12px;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --wrap:1330px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 "Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.08;letter-spacing:-.025em;font-weight:800}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ---------- elementos base ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.eyebrow span{color:var(--dim)}
+.h2{font-size:clamp(28px,3.6vw,44px)}
+.lead{color:var(--muted);font-size:18px;max-width:620px}
+.hl{color:var(--accent)}
+.sec{padding:112px 0;position:relative}
+.sec-head{display:grid;gap:18px;margin-bottom:56px;max-width:760px}
+.sec-head.center{margin-inline:auto;text-align:center;justify-items:center}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:56px;padding:0 26px;border-radius:10px;border:0;font:700 14px/1.2 "Figtree",sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 30px -10px rgba(31,176,244,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(31,176,244,.9)}
+.btn-primary svg{transition:transform .2s}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line-2)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.checks{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:13px;list-style:none;padding:0;margin:0}
+.checks li{display:flex;align-items:center;gap:8px}
+.checks svg{color:var(--accent);flex:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:72px 0 88px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 60% at 80% 20%,rgba(31,176,244,.14),transparent 70%),
+  radial-gradient(45% 45% at 10% 55%,rgba(116,164,208,.08),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent);opacity:.5;pointer-events:none}
+.hero .wrap > *{min-width:0}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,4.1vw,58px);text-transform:uppercase;margin:22px 0 22px;letter-spacing:-.03em;line-height:1.02}
+.hero .lead{font-size:18px;margin-bottom:32px}
+.hero .lead strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.pillar{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:rgba(255,255,255,.02);font-size:13px;font-weight:600;line-height:1.3;transition:border-color .3s,background .3s}
+.pillar small{display:block;font:500 10px/1 var(--mono);letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
+.pillar.on{border-color:rgba(31,176,244,.5);background:rgba(31,176,244,.08)}
+.pillar.on small{color:var(--accent)}
+
+/* ---------- mockup do sistema ---------- */
+.demo{position:relative}
+.demo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font:500 11px/1 var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.demo-top .status{display:flex;align-items:center;gap:8px}
+.demo-top .status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulse 2s infinite}
+.demo-top .pill{border:1px solid var(--line-2);border-radius:6px;padding:7px 10px;text-transform:none;letter-spacing:0;color:var(--text)}
+.app{background:linear-gradient(180deg,#0d2236,#0a1a2b);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(31,176,244,.05),0 0 80px -20px rgba(31,176,244,.25);overflow:hidden}
+.app-bar{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--line);font:500 11px/1 var(--mono);color:var(--dim)}
+.dots{display:flex;gap:6px}
+.dots i{width:10px;height:10px;border-radius:50%;background:#f2645a}
+.dots i:nth-child(2){background:#f5c524}
+.dots i:nth-child(3){background:#2bd17e}
+.app-bar .ver{margin-left:auto;color:var(--text);display:flex;align-items:center;gap:6px}
+.app-bar .ver::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.app-body{padding:18px;min-height:318px}
+.tabs{display:flex;align-items:center;gap:4px;margin-bottom:18px}
+.tab{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px/1 "Figtree",sans-serif;padding:9px 12px;border-radius:7px;cursor:pointer;transition:background .25s,color .25s}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.sync{margin-left:auto;font:500 11px/1 var(--mono);color:var(--accent);border:1px solid rgba(31,176,244,.35);border-radius:6px;padding:7px 10px;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.sync::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite}
+.panel{display:none;animation:fade .45s ease}
+.panel.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.kpi{border:1px solid var(--line);border-radius:9px;padding:12px;background:rgba(255,255,255,.02)}
+.kpi small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:600 9.5px/1.2 "Figtree",sans-serif;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
+.kpi b{font:600 14px/1.2 var(--mono);color:var(--text);white-space:nowrap}
+.kpi b.c-accent{color:var(--accent)}
+.kpi b.c-ok{color:var(--ok)}
+.tbl{border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:12px}
+.tbl-row{display:grid;grid-template-columns:1.25fr 1.3fr 1fr auto;gap:10px;white-space:nowrap;align-items:center;padding:11px 12px;border-top:1px solid var(--line)}
+.tbl-row:first-child{border-top:0;font:600 9.5px/1 "Figtree",sans-serif;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;background:rgba(255,255,255,.02)}
+.tbl-row span:last-child{justify-self:end}
+.tbl-row .doc{font-family:var(--mono);color:var(--accent)}
+.tag{font:600 10px/1 "Figtree",sans-serif;padding:5px 8px;border-radius:5px;white-space:nowrap}
+.tag.ok{background:rgba(43,209,126,.12);color:var(--ok);border:1px solid rgba(43,209,126,.3)}
+.tag.warn{background:rgba(245,165,36,.12);color:var(--warn);border:1px solid rgba(245,165,36,.3)}
+.tag.info{background:rgba(31,176,244,.12);color:var(--accent);border:1px solid rgba(31,176,244,.3)}
+.line-item{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:9px;padding:12px;font-size:12.5px;font-weight:600;margin-top:10px}
+.line-item em{font-style:normal;font-size:11px;color:var(--ok);font-weight:500}
+.batch{border:1px solid var(--line);border-radius:9px;padding:12px;margin-top:10px;font-size:12px}
+.batch-head{display:flex;justify-content:space-between;margin-bottom:9px;color:var(--muted)}
+.batch-head b{font-family:var(--mono);color:var(--text)}
+.bar{height:6px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:6px;transition:width 2.6s cubic-bezier(.2,.7,.2,1)}
+.spark{display:flex;align-items:flex-end;gap:5px;height:56px;margin-top:10px;padding:10px 12px 0;border:1px solid var(--line);border-radius:9px}
+.spark i{flex:1;background:linear-gradient(180deg,var(--accent),rgba(31,176,244,.15));border-radius:3px 3px 0 0;height:0;transition:height .9s cubic-bezier(.2,.7,.2,1)}
+.app-foot{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+.app-foot span:first-child{display:flex;align-items:center;gap:7px}
+.app-foot b{color:var(--text);font-weight:700}
+.toast{position:absolute;left:-24px;bottom:-60px;z-index:2;display:flex;align-items:center;gap:10px;background:#0f2a42;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;font-size:12px;box-shadow:0 20px 40px -12px rgba(0,0,0,.7);opacity:0;transform:translateY(8px);transition:.4s}
+.toast.on{opacity:1;transform:none}
+.toast .ico{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:rgba(43,209,126,.15);color:var(--ok)}
+.toast small{display:block;color:var(--muted);font-size:11px}
+
+
+/* =====================================================================
+   Seções clonadas da LP atual (WordPress/Elementor)
+   ===================================================================== */
+:root{
+  --navy:#0e1733;
+  --navy-top:#000822;
+  --navy-foot:#000618;
+  --light:#f5f8fc;
+  --sky:#e6f9ff;
+  --blue:#1d3fa3;
+  --cyan:#28c7f7;
+  --cyan-l:#8be8ff;
+  --ink:#0e1733;
+  --body:#475467;
+  --gray:#667085;
+  --border:#eaecf0;
+  --grad:linear-gradient(90deg,#1d3fa3 0%,#28c7f7 100%);
+}
+.w{max-width:1330px;margin:0 auto;padding:0 24px}
+.s{position:relative;padding:160px 0}
+.s > .w{position:relative;z-index:2}
+.on-dark{background:var(--navy);color:#fff}
+.on-light{background:var(--light);color:var(--ink)}
+.on-white{background:#fff;color:var(--ink)}
+.on-sky{background:var(--sky);color:var(--ink)}
+
+/* divisores curvos (mesmo path do Elementor) */
+.shape{position:absolute;left:0;width:100%;line-height:0;overflow:hidden;z-index:1;pointer-events:none}
+.shape svg{width:calc(100% + 1.3px);height:80px}
+.shape path{fill:var(--c)}
+.shape.top{top:-1px}
+.shape.bottom{bottom:-1px;transform:rotate(180deg)}
+.shape.h70 svg{height:70px}
+
+/* tipografia das seções */
+.kicker{display:block;font-size:13px;font-weight:600;line-height:1.5;letter-spacing:1.1px;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+.on-dark .kicker{color:var(--cyan-l)}
+.t2{font-size:44px;font-weight:400;line-height:1;letter-spacing:-2.5px;color:var(--ink);margin:0}
+.t2 b{font-weight:700;color:var(--blue)}
+.on-dark .t2{color:rgba(255,255,255,.92)}
+.on-dark .t2 b{color:var(--cyan-l)}
+.txt{font-size:16px;line-height:1.5;color:var(--body);margin-top:20px}
+.on-dark .txt{color:rgba(255,255,255,.72)}
+.center{text-align:center}
+.center .txt{max-width:600px;margin-inline:auto}
+
+/* botões da LP atual */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:20px 40px;border-radius:15px;font:600 16px/1 "Figtree",sans-serif;text-decoration:none;color:#fff;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+.b:hover{transform:translateY(-2px)}
+.b svg{transition:transform .2s}
+.b:hover svg{transform:translateX(3px)}
+.b-grad{background:var(--grad);box-shadow:0 10px 30px -12px rgba(40,199,247,.6)}
+.b-blue{background:var(--blue)}
+.b-out{background:transparent;color:var(--blue);border-color:var(--blue)}
+.b-out:hover{background:var(--blue);color:#fff}
+.b-pill{border-radius:100px;padding:13px 25px}
+
+/* topo */
+.topbar{background:var(--navy-top);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar .w{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:104px}
+.topbar .logo img{height:38px;width:auto}
+.offer{display:flex;align-items:center;gap:16px;padding:6px 6px 6px 22px;border:1px solid rgba(255,255,255,.14);border-radius:100px;background:rgba(255,255,255,.04);font-size:14px;color:rgba(255,255,255,.85)}
+.offer strong{color:var(--cyan-l);font-weight:700}
+
+/* hero: mesmo navy da LP atual */
+.hero{background:var(--navy);color:var(--text)}
+
+/* números */
+.stats{background:var(--light);padding:0}
+.stats .w{padding-top:0}
+.stats-card{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy);border-radius:15px;padding:40px 80px;box-shadow:0 5px 20px 0 var(--navy)}
+.stat{padding:0 40px;border-left:1px solid rgba(255,255,255,.1)}
+.stat:first-child{border-left:0;padding-left:0}
+.spill{display:inline-block;padding:5px 15px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(139,232,255,.25);font-size:13px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--cyan-l)}
+.stat .num{display:block;font-size:74px;font-weight:700;line-height:1;letter-spacing:-5px;color:var(--cyan-l);margin:22px 0 14px}
+.stat p{font-size:15px;line-height:1.5;color:rgba(255,255,255,.8);max-width:240px}
+
+/* 30 anos */
+.about{padding:80px 0 160px}
+.labels{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin:60px 0 50px}
+.label{display:flex;align-items:center;min-height:104px;background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;font-size:18px;font-weight:700;line-height:1.2;letter-spacing:-.8px;color:var(--ink);transition:border-color .3s,transform .3s}
+.label:hover{border-color:var(--cyan);transform:translateY(-3px)}
+
+/* problema / implantação (blocos escuros em duas colunas) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.callout{margin-top:50px;padding:30px 20px;border-radius:15px;border:1px solid rgba(40,199,247,.25);background:linear-gradient(90deg,rgba(40,199,247,.12) 0%,rgba(29,63,163,.18) 100%);font-size:16px;line-height:1.5;color:#fff;max-width:560px}
+.callout b{color:var(--cyan-l)}
+.items{display:grid;gap:10px}
+.items.boxed{padding:20px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.item{padding:15px 20px;border-radius:15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:16px;line-height:1.5;color:rgba(255,255,255,.85);transition:border-color .3s,background .3s}
+.item:hover{border-color:rgba(139,232,255,.35);background:rgba(255,255,255,.08)}
+
+/* módulos */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:60px 0 50px}
+.mod{min-height:180px;padding:30px;border-radius:15px;border:1px solid var(--cyan);border-top-width:3px;background:#fff;display:flex;flex-direction:column;justify-content:center;transition:box-shadow .3s,transform .3s}
+.mod:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(29,63,163,.45)}
+.mod h3{font-size:20px;font-weight:700;line-height:1.2;letter-spacing:-.8px;color:var(--ink);margin:0 0 15px}
+.mod p{font-size:16px;line-height:1.5;color:var(--gray)}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px}
+.cta-row.center{justify-content:center}
+
+/* construído para o transporte */
+.feito{padding:150px 0}
+.feito .cta-row{margin-top:40px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:20px;background:#fff;border:1px solid var(--border);border-radius:15px;box-shadow:0 5px 39px 0 rgba(0,0,0,.1)}
+.fact{padding:20px 20px 16px;border-radius:15px;background:var(--light);min-height:130px}
+.fact b{display:block;font-size:28px;font-weight:700;line-height:1.2;letter-spacing:-1.3px;color:var(--blue);margin-bottom:10px}
+.fact span{display:block;font-size:14px;line-height:1.5;color:var(--gray)}
+.fact.dark{background:linear-gradient(90deg,#14245a 0%,#1d3fa3 100%)}
+.fact.dark b{color:var(--cyan-l)}
+.fact.dark span{color:rgba(255,255,255,.85)}
+
+/* avaliações */
+.reviews-wrap{position:relative;margin:50px 0 50px}
+.reviews{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 60px)/4);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 10px}
+.reviews::-webkit-scrollbar{display:none}
+.rev{text-align:left;scroll-snap-align:start;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px;min-height:190px;box-shadow:0 2px 10px -6px rgba(14,23,51,.15)}
+.rev-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:700;color:#fff;background:var(--c,#1d3fa3)}
+.rev-head div{flex:1;min-width:0}
+.rev-head strong{display:block;font-size:14px;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rev-head small{display:block;font-size:12px;color:#8c8c8c}
+.rev-stars{display:flex;align-items:center;gap:2px;color:#f6bb06;margin-bottom:12px}
+.rev-stars .ver{color:#1a73e8;margin-left:6px}
+.rev p{font-size:14px;line-height:1.5;color:#333}
+.rev p.muted{color:#8c8c8c}
+.rev-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid #e5e7eb;background:#fff;display:grid;place-items:center;cursor:pointer;color:#555;box-shadow:0 4px 14px -6px rgba(0,0,0,.25);z-index:3}
+.rev-nav.prev{left:-18px}
+.rev-nav.next{right:-18px}
+.rev-nav[disabled]{opacity:0;pointer-events:none}
+
+/* FAQ */
+.faq{max-width:1000px;margin:60px auto 0;display:grid;gap:15px}
+.faq details{background:#fff;border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:background .25s}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px;font-size:18px;font-weight:600;line-height:1.2;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{flex:none;color:var(--ink);transition:transform .25s}
+.faq details[open]{background:var(--border)}
+.faq details[open] summary svg{transform:rotate(90deg)}
+.faq details p{padding:0 25px 25px;font-size:15px;line-height:1.6;color:var(--body)}
+
+/* formulário (bloco escuro + card branco, como o bloco final da LP atual) */
+.lead-top{padding:72px 0 190px}
+.lead-final{padding:160px 0 120px}
+.lead-top .split,.lead-final .split{align-items:center}
+.bene{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:10px}
+.bene li{display:flex;align-items:center;gap:10px;font-size:16px;line-height:1.5;color:rgba(255,255,255,.88)}
+.bene svg{flex:none;color:var(--cyan-l)}
+.sla{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:12px 18px;border-radius:15px;border:1px solid rgba(40,199,247,.25);background:linear-gradient(90deg,rgba(40,199,247,.12),rgba(29,63,163,.18));font-size:15px;color:#fff}
+.sla svg{color:var(--cyan-l);flex:none}
+.sla b{color:var(--cyan-l)}
+.fcard{background:#fff;border-radius:15px;padding:40px;color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.fcard h3{font-size:22px;font-weight:700;line-height:1.1;color:var(--ink);margin:0}
+.fcard > p{font-size:14px;color:var(--gray);margin:10px 0 26px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px}
+.ff{display:grid;gap:8px;min-width:0}
+.ff.full{grid-column:1/-1}
+.fl{font-size:15px;font-weight:600;line-height:1.1;color:#344054}
+.fl i{color:var(--blue);font-style:normal}
+.fi{position:relative}
+.fi svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#98a2b3;pointer-events:none}
+.fi input{width:100%;height:48px;padding:0 16px 0 40px;background:#fff;border:1px solid #969da8;border-radius:15px;color:var(--ink);font:400 16px "Figtree",sans-serif;transition:border-color .2s,box-shadow .2s}
+.fi input::placeholder{color:#999}
+.fi input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,63,163,.15)}
+.ff.err .fi input{border-color:#d92d20}
+.fm{display:none;font-size:12px;color:#d92d20}
+.ff.err .fm{display:block}
+fieldset.ff{border:0;margin:0;padding:0}
+fieldset.ff legend{padding:0;margin-bottom:8px}
+.chips{display:grid;gap:8px}
+.chips.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.chips.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chip{position:relative;min-width:0}
+.chip input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.chip span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:6px 8px;border:1px solid #d0d5dd;border-radius:12px;background:#fff;font-size:14px;line-height:1.2;color:#344054;transition:.2s}
+.chip input:hover + span{border-color:var(--cyan)}
+.chip input:checked + span{background:var(--grad);border-color:transparent;color:#fff;font-weight:700}
+.chip input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
+.ff.err .chip span{border-color:#fda29b}
+.fcard .b{width:100%;margin-top:24px}
+.legal{display:flex;gap:8px;align-items:flex-start;margin-top:14px;font-size:12px;line-height:1.5;color:var(--gray)}
+.legal svg{flex:none;margin-top:2px}
+.legal a{color:var(--gray)}
+.done-msg{display:none;text-align:center;padding:30px 10px}
+.done-msg .ic{width:64px;height:64px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:#ecfdf3;color:#12b76a}
+.done-msg h3{margin-bottom:10px}
+.done-msg p{color:var(--gray)}
+.fcard.done form,.fcard.done > h3,.fcard.done > p{display:none}
+.fcard.done .done-msg{display:block}
+
+/* rodapé */
+.footer{background:var(--navy-foot);color:rgba(255,255,255,.65);font-size:16px;line-height:1.5}
+.footer .w{padding-top:60px;padding-bottom:60px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer img{height:40px;width:auto;margin-bottom:24px}
+.footer p{max-width:340px;font-size:15px}
+.footer strong{display:block;color:#fff;margin-bottom:20px}
+.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.footer a{color:inherit;text-decoration:none}
+.footer a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08)}
+.foot-bottom .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px;font-size:13px}
+.foot-bottom b{color:#fff}
+
+/* barra fixa mobile */
+.mbar{display:none}
+
+/* responsivo das seções clonadas */
+@media (max-width:1080px){
+  .split{grid-template-columns:1fr;gap:50px}
+  .labels{grid-template-columns:repeat(3,1fr)}
+  .mods{grid-template-columns:1fr 1fr}
+  .reviews{grid-auto-columns:calc((100% - 20px)/2)}
+  .stats-card{padding:40px}
+  .stat{padding:0 24px}
+  .stat .num{font-size:58px}
+}
+@media (max-width:760px){
+  .w{padding:0 16px}
+  .s{padding:100px 0}
+  .s.stats{padding:0}
+  .t2{font-size:32px;letter-spacing:-1.5px}
+  .shape svg,.shape.h70 svg{height:40px}
+  .topbar .w{min-height:72px}
+  .topbar .logo img{height:30px}
+  .offer{padding:0;border:0;background:none}
+  .offer > span{display:none}
+  .offer .b{padding:11px 18px;font-size:14px}
+  .stats-card{grid-template-columns:1fr;padding:28px 24px}
+  .stat{padding:22px 0;border-left:0;border-top:1px solid rgba(255,255,255,.1)}
+  .stat:first-child{border-top:0;padding-top:0}
+  .stat:last-child{padding-bottom:0}
+  .stat .num{font-size:56px;letter-spacing:-3px;margin:16px 0 8px}
+  .about{padding:70px 0 110px}
+  .labels{grid-template-columns:1fr 1fr;gap:12px;margin:40px 0 36px}
+  .label{min-height:76px;font-size:16px}
+  .label:last-child{grid-column:1/-1}
+  .callout{margin-top:32px}
+  .items.boxed{padding:12px}
+  .mods{grid-template-columns:1fr;gap:14px;margin:40px 0 36px}
+  .mod{min-height:0;padding:24px}
+  .feito{padding:110px 0}
+  .facts{padding:12px}
+  .fact{padding:16px;min-height:0}
+  .fact b{font-size:24px}
+  .reviews{grid-auto-columns:86%}
+  .rev-nav{display:none}
+  .faq{margin-top:40px;gap:10px}
+  .faq summary{padding:20px;font-size:16px}
+  .faq details p{padding:0 20px 20px}
+  .lead-top{padding:80px 0 130px}
+  .lead-final{padding:110px 0 80px}
+  .fcard{padding:24px 18px}
+  .fg{grid-template-columns:1fr}
+  .chips.c5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .chips.c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cta-row .b{width:100%}
+  .footer .w{grid-template-columns:1fr;gap:28px;padding-bottom:40px}
+  .foot-bottom .w{padding-bottom:100px}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,23,51,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);transform:translateY(110%);transition:transform .3s}
+  .mbar.on{transform:none}
+  .mbar .b{width:100%;padding:17px 20px}
+}
+/* ---------- animações ---------- */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+@media (max-width:1080px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:48px}
+  .toast{left:12px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  .hide-m{display:none}
+  .hero{padding:40px 0 64px}
+  .hero .lead{font-size:16px}
+  .hero-cta .btn{width:100%}
+  .hero-cta .btn-ghost{min-height:48px}
+  .pillars{grid-template-columns:1fr 1fr;margin-top:32px}
+  .demo-top .pill{display:none}
+  .app-body{padding:14px}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .kpi{padding:10px 8px;min-width:0}
+  .kpi small{font-size:8.5px}
+  .kpi b{font-size:11.5px;white-space:normal}
+  .tbl-row{grid-template-columns:1fr 1fr auto;font-size:11px;white-space:normal;line-height:1.35}
+  .tbl-row > :nth-child(3){display:none}
+  .app-bar > span:nth-child(2){display:none}
+  .eyebrow{flex-wrap:wrap;gap:4px 8px;font-size:11px}
+  .app-foot{font-size:10px}
+  .sync{display:none}
+  .toast{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check-c" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></g></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-doc-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M10 12l4 4M14 12l-4 4"/></g></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 114 0v2h4v4h-2a2 2 0 100 4h2v4h-4v-2a2 2 0 10-4 0v2H6v-4h2a2 2 0 100-4H6V6h4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A10 10 0 0112 5c5 0 9 4.5 10 7-.4 1-1.2 2.3-2.4 3.5M6.6 6.6C4.4 8 2.8 10.2 2 12c1 2.5 5 7 10 7 1.8 0 3.4-.6 4.8-1.4"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></g></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></g></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="10" cy="6" rx="6" ry="2.5"/><path d="M4 6v10c0 1.4 2.7 2.5 6 2.5M16 6v4"/><path d="M4 11c0 1.4 2.7 2.5 6 2.5"/><path d="M15 17h6M18 14l3 3-3 3"/></g></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="11" rx="1.5"/><circle cx="9" cy="19" r="1.6"/><circle cx="15" cy="19" r="1.6"/><path d="M8 9h8M8 12h5"/></g></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l3 3v4h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></g></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></g></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></g></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></g></symbol>
+  <symbol id="i-fuel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 012-2h6a2 2 0 012 2v16M3 21h12M4 10h10M14 8l3 2v8a1.5 1.5 0 003 0V9l-3-3"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="currentColor"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></g></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1-1.5 2-4 2h-2"/></g></symbol>
+  <symbol id="i-presentation" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M4 4v10a1 1 0 001 1h14a1 1 0 001-1V4M12 15v4M8 21l4-2 4 2"/><path d="M9 11l2-2 2 2 3-3"/></g></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></g></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-verified" viewBox="0 0 24 24"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z" fill="currentColor"/><path d="M8 12l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<template id="gIcon"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></template>
+
+<header class="topbar">
+  <div class="w">
+    <a class="logo" href="#topo" aria-label="A2O Sistemas Gerenciais"><img src="assets/logo-a2o-branco.svg" alt="A2O Sistemas Gerenciais" width="164" height="38"></a>
+    <div class="offer"><span><strong>Diagnóstico operacional sem custo</strong> na demonstração consultiva</span><a class="b b-grad b-pill" href="#demonstracao" data-cta="topbar">Agendar agora <svg width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">TMS para transportadoras <span>/ Gestão completa</span></span>
+      <h1><span class="hl">Sistema TMS</span> para transportadoras que não podem parar.</h1>
+      <p class="lead">Emita até <strong>90 mil CT-e por mês sem travar</strong>, com CT-e, MDF-e, CIOT e NFS-e no mesmo sistema da operação e do financeiro, e plantão técnico 24h.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#demonstracao" data-cta="hero">Ver o sistema funcionando <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#modulos">Conhecer a plataforma</a>
+      </div>
+      <ul class="checks">
+        <li><svg width="16" height="16"><use href="#i-check-c"/></svg>Demonstração personalizada para sua operação</li>
+        <li><svg width="16" height="16"><use href="#i-shield"/></svg>Sem compromisso comercial</li>
+      </ul>
+      <div class="pillars" id="pillars">
+        <div class="pillar" data-p="0"><small>Pilar 01</small>TMS e Viagens</div>
+        <div class="pillar" data-p="1"><small>Pilar 02</small>Gestão de Frota</div>
+        <div class="pillar" data-p="2"><small>Pilar 03</small>Fiscal e SPED</div>
+        <div class="pillar" data-p="3"><small>Pilar 04</small>Financeiro e Acertos</div>
+      </div>
+    </div>
+
+    <div class="demo" aria-label="Demonstração interativa do painel do A2O TMS">
+      <div class="demo-top">
+        <span class="status">Status: uma única operação centralizada</span>
+        <span class="pill">&#8635; Ver convergência</span>
+      </div>
+      <div class="app">
+        <div class="app-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span>app.a2otms.com.br / centro-operacional</span>
+          <span class="ver">A2O TMS</span>
+        </div>
+        <div class="app-body">
+          <div class="tabs" role="tablist">
+            <button class="tab" role="tab" aria-selected="true" data-t="0">TMS</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="1">Frota</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="2">Fiscal</button>
+            <button class="tab" role="tab" aria-selected="false" data-t="3">Financeiro</button>
+            <span class="sync">Operação sincronizada</span>
+          </div>
+
+          <!-- TMS -->
+          <div class="panel on" role="tabpanel" data-panel="0">
+            <div class="kpis">
+              <div class="kpi"><small>Viagens ativas</small><b data-count="42" data-suffix=" carretas">42 carretas</b></div>
+              <div class="kpi"><small>CT-e / MDF-e hoje</small><b class="c-accent" data-count="128" data-suffix=" autorizados">128 autorizados</b></div>
+              <div class="kpi"><small>Cargas em trânsito</small><b class="c-ok" data-count="1480" data-suffix=" tons">1.480 tons</b></div>
+            </div>
+            <div class="tbl">
+              <div class="tbl-row"><span>Viagem / Veículo</span><span>Rota</span><span>Documento</span><span>Status</span></div>
+              <div class="tbl-row"><span>VG-4892 · Scania 540</span><span>Curitiba → Santos</span><span class="doc">MDF-e 008.921</span><span class="tag ok">Em trânsito</span></div>
+              <div class="tbl-row"><span>VG-4893 · Volvo FH</span><span>Campinas → Goiânia</span><span class="doc">MDF-e 008.922</span><span class="tag warn">Carregando</span></div>
+              <div class="tbl-row"><span>VG-4894 · DAF XF</span><span>Rondonópolis → Santos</span><span class="doc">MDF-e 008.923</span><span class="tag info">Autorizado</span></div>
+            </div>
+          </div>
+
+          <!-- FROTA -->
+          <div class="panel" role="tabpanel" data-panel="1">
+            <div class="kpis">
+              <div class="kpi"><small>Veículos ativos</small><b data-count="64" data-suffix=" placas">64 placas</b></div>
+              <div class="kpi"><small>Preventivas da semana</small><b class="c-accent" data-count="7" data-suffix=" agendadas">7 agendadas</b></div>
+              <div class="kpi"><small>Média de consumo</small><b class="c-ok">2,6 km/l</b></div>
+            </div>
+            <div class="tbl">
+              <div class="tbl-row"><span>Veículo</span><span>Serviço</span><span>Km</span><span>Status</span></div>
+              <div class="tbl-row"><span>QTR-2F41 · Scania</span><span>Troca de óleo</span><span class="doc">412.380</span><span class="tag warn">Agendada</span></div>
+              <div class="tbl-row"><span>RKD-8B07 · Volvo</span><span>Pneus eixo 2</span><span class="doc">288.904</span><span class="tag ok">Concluída</span></div>
+              <div class="tbl-row"><span>PXA-1C93 · DAF</span><span>Revisão freios</span><span class="doc">197.215</span><span class="tag info">Em oficina</span></div>
+            </div>
+          </div>
+
+          <!-- FISCAL -->
+          <div class="panel" role="tabpanel" data-panel="2">
+            <div class="kpis">
+              <div class="kpi"><small>CT-e autorizados</small><b class="c-accent">100% SEFAZ</b></div>
+              <div class="kpi"><small>MDF-e ativos</small><b data-count="38" data-suffix=" manifestos">38 manifestos</b></div>
+              <div class="kpi"><small>SPED fiscal / EFD</small><b class="c-ok">Pronto p/ export</b></div>
+            </div>
+            <div class="batch">
+              <div class="batch-head"><span>Lote de CT-e em emissão</span><b><span id="batchN">3.200</span> / 3.200</b></div>
+              <div class="bar"><i id="batchBar"></i></div>
+            </div>
+            <div class="line-item">Emissão de CT-e com CST e CFOP parametrizados <em>Sem retrabalho</em></div>
+          </div>
+
+          <!-- FINANCEIRO -->
+          <div class="panel" role="tabpanel" data-panel="3">
+            <div class="kpis">
+              <div class="kpi"><small>Contas a receber</small><b class="c-accent">Fluxo por frete</b></div>
+              <div class="kpi"><small>Contas a pagar</small><b>Diesel / Peças</b></div>
+              <div class="kpi"><small>Acerto motorista</small><b class="c-ok">Conciliado</b></div>
+            </div>
+            <div class="line-item">Acerto de viagem integrado <em>Sem planilhas paralelas</em></div>
+            <div class="spark" id="spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="app-foot">
+          <span><svg width="14" height="14" style="color:var(--accent)"><use href="#i-db"/></svg>Banco de dados único para toda a transportadora</span>
+          <b>A2O TMS</b>
+        </div>
+      </div>
+      <div class="toast" id="toast">
+        <span class="ico"><svg width="14" height="14"><use href="#i-check"/></svg></span>
+        <span><b id="toastT">MDF-e 008.923 autorizado</b><small id="toastS">SEFAZ · agora</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NÚMEROS -->
+<section class="s stats" aria-label="A2O em números">
+  <div class="shape top"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+  <div class="w">
+    <div class="stats-card">
+      <div class="stat"><span class="spill">● Tradição</span><b class="num">30+</b><p>Anos atendendo transportadoras de todo o Brasil</p></div>
+      <div class="stat"><span class="spill">● Especialização</span><b class="num">100%</b><p>Foco exclusivo no setor de transporte e logística</p></div>
+      <div class="stat"><span class="spill">● Disponibilidade</span><b class="num">24/7</b><p>Operações críticas suportadas todos os dias</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIS DE 30 ANOS -->
+<section class="s on-light about">
+  <div class="w center">
+    <span class="kicker reveal">Mais de 30 anos no setor</span>
+    <h2 class="t2 reveal">Mais de <b>30 anos</b> desenvolvendo sistemas<br class="hide-m"> para transportadoras</h2>
+    <p class="txt reveal">A A2O Sistemas cria soluções para empresas do transporte que precisam de controle, segurança fiscal e estabilidade no dia a dia da operação.</p>
+    <div class="labels">
+      <div class="label reveal">Gestão logística integrada</div>
+      <div class="label reveal">Controle de frota</div>
+      <div class="label reveal">Emissão fiscal</div>
+      <div class="label reveal">Gestão financeira</div>
+      <div class="label reveal">Suporte especializado</div>
+    </div>
+    <a class="b b-blue reveal" href="#modulos">Conhecer o Sistema TMS</a>
+  </div>
+  <div class="shape bottom"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+</section>
+
+<!-- O PROBLEMA -->
+<section class="s on-dark" style="padding:140px 0">
+  <div class="w split">
+    <div class="reveal">
+      <span class="kicker">O problema</span>
+      <h2 class="t2">Quando o sistema falha, <b>a operação sente.</b></h2>
+      <p class="txt">Sistema lento, emissão travando, áreas desconectadas e suporte demorado impactam produtividade, faturamento e controle da transportadora.</p>
+      <div class="callout">A A2O ajuda sua empresa a <b>reduzir retrabalho, centralizar informações e operar com mais previsibilidade.</b></div>
+    </div>
+    <div class="items boxed reveal">
+      <div class="item">Sistema lento em horário de pico</div>
+      <div class="item">Emissão fiscal travando em momentos críticos</div>
+      <div class="item">Áreas desconectadas e dados duplicados</div>
+      <div class="item">Suporte demorado quando a operação para</div>
+      <div class="item">Falta de visibilidade sobre frota e custos</div>
+      <div class="item">Retrabalho operacional e financeiro</div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="s on-white" id="modulos">
+  <div class="shape top"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+  <div class="w">
+    <div class="reveal" style="max-width:640px">
+      <span class="kicker">Sistema TMS · A2O</span>
+      <h2 class="t2">Controle sua transportadora em um <b>único Sistema TMS</b></h2>
+      <p class="txt">Com a A2O, sua operação centraliza processos essenciais em uma plataforma completa, modular e construída para a rotina real do transporte.</p>
+    </div>
+    <div class="mods">
+      <article class="mod reveal"><h3>Emissão fiscal</h3><p>CT-e, MDF-e, NF-e e rotinas fiscais com alta performance e estabilidade no momento certo.</p></article>
+      <article class="mod reveal"><h3>Operação logística</h3><p>Cargas, viagens, entregas e ocorrências controladas em fluxo único e organizado.</p></article>
+      <article class="mod reveal"><h3>Gestão de frota</h3><p>Manutenção, veículos, custos e desempenho monitorados com visibilidade completa.</p></article>
+      <article class="mod reveal"><h3>Financeiro</h3><p>Contas, fluxo de caixa, custos e indicadores integrados à operação em tempo real.</p></article>
+      <article class="mod reveal"><h3>Relatórios</h3><p>Dados consolidados para decisões mais rápidas, mais seguras e baseadas em fato.</p></article>
+      <article class="mod reveal"><h3>Plataforma integrada</h3><p>Todos os módulos conectados, sem duplicidade de dados e sem retrabalho entre áreas.</p></article>
+    </div>
+    <div class="cta-row center reveal"><a class="b b-grad" href="#demonstracao" data-cta="modulos">Agendar demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div>
+  </div>
+  <div class="shape bottom h70"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#e6f9ff"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+</section>
+
+<!-- CONSTRUÍDO PARA O TRANSPORTE -->
+<section class="s on-sky feito" id="diferenciais">
+  <div class="w split">
+    <div class="reveal">
+      <span class="kicker">Construído para o transporte</span>
+      <h2 class="t2">Feito para a <b>rotina real</b> das transportadoras</h2>
+      <p class="txt">A A2O é desenvolvida para empresas que precisam lidar com emissão fiscal, frota, viagens, custos operacionais e suporte rápido todos os dias.</p>
+      <div class="cta-row">
+        <a class="b b-blue" href="#demonstracao" data-cta="diferenciais">Quero ver na prática</a>
+        <a class="b b-out" href="#faq">Tirar dúvidas</a>
+      </div>
+    </div>
+    <div class="facts reveal">
+      <div class="fact dark"><b>100%</b><span>Vertical de transporte e logística</span></div>
+      <div class="fact"><b>CT-e</b><span>MDF-e, NF-e e rotinas fiscais nativas</span></div>
+      <div class="fact"><b>24/7</b><span>Operações críticas suportadas</span></div>
+      <div class="fact dark"><b>Integrado</b><span>Frota, operação, financeiro e fiscal em uma só plataforma</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="s on-white" id="avaliacoes">
+  <div class="shape top"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#e6f9ff"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+  <div class="w center">
+    <span class="kicker reveal">Sistema TMS · A2O</span>
+    <h2 class="t2 reveal">Avaliações de quem <b>confia na operação</b><br class="hide-m"> da A2O</h2>
+    <div class="reviews-wrap reveal">
+      <button class="rev-nav prev" type="button" aria-label="Avaliações anteriores"><svg width="16" height="16" style="transform:rotate(180deg)"><use href="#i-chev"/></svg></button>
+      <div class="reviews" id="reviews"></div>
+      <button class="rev-nav next" type="button" aria-label="Próximas avaliações"><svg width="16" height="16"><use href="#i-chev"/></svg></button>
+    </div>
+    <a class="b b-grad reveal" href="#demonstracao" data-cta="avaliacoes">Agendar demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+  </div>
+  <div class="shape bottom"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+</section>
+
+<!-- IMPLANTAÇÃO -->
+<section class="s on-dark" style="padding:140px 0">
+  <div class="w split">
+    <div class="reveal">
+      <span class="kicker">Implantação assistida</span>
+      <h2 class="t2">Trocar de sistema <b>não precisa travar</b> sua operação</h2>
+      <p class="txt">A A2O acompanha sua empresa durante toda a implantação, treinamento e adaptação da equipe, com foco em manter a operação rodando sem ruído.</p>
+    </div>
+    <div class="items reveal">
+      <div class="item">Implantação assistida</div>
+      <div class="item">Suporte especializado</div>
+      <div class="item">Treinamento da equipe</div>
+      <div class="item">Acompanhamento na transição</div>
+      <div class="item">Foco em continuidade operacional</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s on-light" id="faq">
+  <div class="shape top"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+  <div class="w">
+    <div class="center reveal">
+      <span class="kicker">Perguntas frequentes</span>
+      <h2 class="t2">Antes de escolher um Sistema TMS, <b>veja o<br class="hide-m"> que considerar.</b></h2>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>A A2O atende transportadoras de quais portes?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>Atende empresas que precisam controlar operação, frota, financeiro e fiscal com mais estabilidade e organização.</p></details>
+      <details><summary>O sistema ajuda na emissão fiscal?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>Sim. A plataforma contempla CT-e, MDF-e, NF-e e rotinas fiscais relacionadas à operação.</p></details>
+      <details><summary>A A2O também faz controle de frota?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>Sim. O sistema permite acompanhar frota, manutenção, custos e informações operacionais dos veículos.</p></details>
+      <details><summary>Existe suporte durante a implantação?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>Sim. A equipe acompanha a implantação, treinamento e adaptação da operação.</p></details>
+      <details><summary>O sistema é indicado para quem já usa outro TMS?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>Sim. A A2O é indicada para transportadoras que já usam outro sistema, mas enfrentam travamentos, falta de integração, suporte demorado ou pouca visibilidade operacional.</p></details>
+      <details><summary>Quanto custa o Sistema TMS da A2O?<svg width="14" height="14"><use href="#i-chev"/></svg></summary><p>O valor depende dos módulos, do número de usuários e do escopo da implantação. Na demonstração, o especialista entende a sua operação e monta a proposta no tamanho certo para ela.</p></details>
+    </div>
+  </div>
+  <div class="shape bottom h70"><svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="--c:#0e1733"><path d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"/></svg></div>
+</section>
+
+<!-- BLOCO FINAL COM FORMULÁRIO -->
+<section class="s on-dark lead-final" id="demonstracao">
+  <div class="w split">
+    <div class="reveal">
+      <span class="kicker">Agende sua demonstração</span>
+      <h2 class="t2">Sua transportadora precisa de <b>mais controle</b>?</h2>
+      <p class="txt">Agende uma demonstração e veja como o Sistema TMS pode ajudar sua operação a ganhar estabilidade, controle e segurança fiscal.</p>
+      <ul class="bene">
+        <li><svg width="18" height="18"><use href="#i-check-c"/></svg>Demonstração consultiva e personalizada</li>
+        <li><svg width="18" height="18"><use href="#i-check-c"/></svg>Diagnóstico da operação atual</li>
+        <li><svg width="18" height="18"><use href="#i-check-c"/></svg>Plano de implantação sob medida</li>
+        <li><svg width="18" height="18"><use href="#i-check-c"/></svg>Suporte especializado em transporte</li>
+      </ul>
+    </div>
+    <div class="fcard reveal" data-form-slot="final"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="w">
+    <div>
+      <img src="assets/logo-a2o-branco.svg" alt="A2O Sistemas Gerenciais" width="172" height="40" loading="lazy">
+      <p>Sistema TMS para transportadoras que não podem parar. Mais de 30 anos desenvolvendo soluções para o setor de transporte.</p>
+    </div>
+    <div>
+      <strong>Contato</strong>
+      <ul>
+        <li><a href="tel:+556235873147">(62) 3587-3147</a></li>
+        <li>Aparecida de Goiânia, GO</li>
+        <li>CNPJ: 05.132.079/0001-28</li>
+      </ul>
+    </div>
+    <div>
+      <strong>Navegação</strong>
+      <ul>
+        <li><a href="#modulos">Sistema TMS</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#demonstracao">Agendar demonstração</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="w">
+      <span>© 2026 A2O Sistemas. Todos os direitos reservados. <a href="https://a2osistemas.com.br/politica-de-privacidade/">Política de Privacidade</a></span>
+      <span>Desenvolvido por <b>3ADS</b></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar"><a class="b b-grad" href="#demonstracao" data-cta="mobile-bar">Agendar demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div>
+
+<!-- Formulário (usado no topo e no bloco final). Integrar com o RD Station na implementação. -->
+<template id="formTpl">
+  <h3>Agende uma demonstração</h3>
+  <p>Preencha os dados da sua operação para direcionarmos o especialista ideal.</p>
+  <form novalidate>
+    <input type="hidden" name="origem_form"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid">
+    <div class="fg">
+      <div class="ff">
+        <label class="fl" data-for="nome">Nome <i>*</i></label>
+        <div class="fi"><svg width="18" height="18"><use href="#i-user"/></svg><input name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" required></div>
+        <span class="fm">Informe seu nome.</span>
+      </div>
+      <div class="ff">
+        <label class="fl" data-for="empresa">Empresa <i>*</i></label>
+        <div class="fi"><svg width="18" height="18"><use href="#i-building"/></svg><input name="empresa" type="text" placeholder="Nome da transportadora" autocomplete="organization" required></div>
+        <span class="fm">Informe o nome da empresa.</span>
+      </div>
+      <div class="ff full">
+        <label class="fl" data-for="whatsapp">WhatsApp <i>*</i></label>
+        <div class="fi"><svg width="18" height="18"><use href="#i-phone"/></svg><input name="whatsapp" type="tel" inputmode="numeric" placeholder="(DDD) 99999-9999" autocomplete="tel-national" required></div>
+        <span class="fm">Informe um número com DDD.</span>
+      </div>
+      <fieldset class="ff full">
+        <legend class="fl">Quantidade de veículos (frota) <i>*</i></legend>
+        <div class="chips c5">
+          <label class="chip"><input type="radio" name="frota" value="Até 10" required><span>Até 10</span></label>
+          <label class="chip"><input type="radio" name="frota" value="11-30"><span>11–30</span></label>
+          <label class="chip"><input type="radio" name="frota" value="31-50"><span>31–50</span></label>
+          <label class="chip"><input type="radio" name="frota" value="51-100"><span>51–100</span></label>
+          <label class="chip"><input type="radio" name="frota" value="Mais de 100"><span>Mais de 100</span></label>
+        </div>
+        <span class="fm">Selecione o tamanho da frota.</span>
+      </fieldset>
+      <fieldset class="ff full">
+        <legend class="fl">Faturamento médio mensal <i>*</i></legend>
+        <div class="chips c3">
+          <label class="chip"><input type="radio" name="faturamento" value="Até R$ 500 mil" required><span>Até R$ 500 mil</span></label>
+          <label class="chip"><input type="radio" name="faturamento" value="R$ 500 mil a R$ 800 mil"><span>R$ 500 a 800 mil</span></label>
+          <label class="chip"><input type="radio" name="faturamento" value="R$ 800 mil a R$ 2 milhões"><span>R$ 800 mil a 2 mi</span></label>
+          <label class="chip"><input type="radio" name="faturamento" value="R$ 2 milhões a R$ 5 milhões"><span>R$ 2 a 5 milhões</span></label>
+          <label class="chip"><input type="radio" name="faturamento" value="Acima de R$ 5 milhões"><span>Acima de R$ 5 mi</span></label>
+          <label class="chip"><input type="radio" name="faturamento" value="Prefiro conversar"><span>Prefiro conversar</span></label>
+        </div>
+        <span class="fm">Selecione uma faixa de faturamento.</span>
+      </fieldset>
+      <fieldset class="ff full">
+        <legend class="fl">Principal desafio na operação atual <i>*</i></legend>
+        <div class="chips c3">
+          <label class="chip"><input type="radio" name="desafio" value="Operação/TMS" required><span>Operação / TMS</span></label>
+          <label class="chip"><input type="radio" name="desafio" value="Frota"><span>Frota</span></label>
+          <label class="chip"><input type="radio" name="desafio" value="Fiscal"><span>Fiscal</span></label>
+          <label class="chip"><input type="radio" name="desafio" value="Financeiro"><span>Financeiro</span></label>
+          <label class="chip"><input type="radio" name="desafio" value="Integração entre áreas"><span>Integração entre áreas</span></label>
+          <label class="chip"><input type="radio" name="desafio" value="Outro"><span>Outro</span></label>
+        </div>
+        <span class="fm">Selecione o principal desafio.</span>
+      </fieldset>
+    </div>
+    <button class="b b-grad" type="submit" data-cta="form">Quero ver o sistema funcionando <svg width="16" height="16"><use href="#i-arrow"/></svg></button>
+    <p class="legal"><svg width="14" height="14"><use href="#i-lock"/></svg><span>Seus dados são usados só para o contato sobre a demonstração, conforme a LGPD e a nossa <a href="https://a2osistemas.com.br/politica-de-privacidade/">Política de Privacidade</a>.</span></p>
+  </form>
+  <div class="done-msg" role="status" aria-live="polite">
+    <span class="ic"><svg width="30" height="30"><use href="#i-check"/></svg></span>
+    <h3>Recebemos seus dados</h3>
+    <p>Um especialista da A2O retorna em até 1h útil para marcar o melhor horário da demonstração.</p>
+  </div>
+</template>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fmt = function(n){ return n.toLocaleString('pt-BR'); };
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* contador: o valor final já está no HTML; a animação parte de perto dele */
+  function count(el, to, suffix, dur){
+    if (reduce){ el.textContent = fmt(to) + (suffix||''); return; }
+    var from = Math.round(to * .6), t0 = performance.now();
+    (function step(t){
+      var p = Math.min((t - t0) / (dur||900), 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(from + (to - from) * e)) + (suffix||'');
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* mockup do hero: abas com rotação automática */
+  var tabs = [].slice.call(document.querySelectorAll('.tab')),
+      panels = [].slice.call(document.querySelectorAll('.panel')),
+      pillars = [].slice.call(document.querySelectorAll('.pillar')),
+      toast = document.getElementById('toast'), toastT = document.getElementById('toastT'), toastS = document.getElementById('toastS'),
+      toasts = [['MDF-e 008.923 autorizado','SEFAZ · agora'],['Preventiva QTR-2F41 agendada','Frota · agora'],['Lote de 3.200 CT-e autorizado','SEFAZ · agora'],['Acerto VG-4892 conciliado','Financeiro · agora']],
+      cur = 0, timer, userPaused = false;
+
+  function show(i){
+    cur = i;
+    tabs.forEach(function(t,k){ t.setAttribute('aria-selected', k===i ? 'true' : 'false'); });
+    panels.forEach(function(p,k){ p.classList.toggle('on', k===i); });
+    pillars.forEach(function(p,k){ p.classList.toggle('on', k===i); });
+    panels[i].querySelectorAll('[data-count]').forEach(function(el){ count(el, +el.dataset.count, el.dataset.suffix, 800); });
+    if (i === 2){
+      var bar = document.getElementById('batchBar'), n = document.getElementById('batchN');
+      bar.style.transition = 'none'; bar.style.width = '0'; bar.offsetWidth; bar.style.transition = '';
+      requestAnimationFrame(function(){ bar.style.width = '100%'; });
+      count(n, 3200, '', 2400);
+    }
+    if (i === 3){
+      var hs = [38,52,45,61,57,70,66,78,72,85,80,94];
+      document.querySelectorAll('#spark i').forEach(function(b,k){ b.style.height = '0'; setTimeout(function(){ b.style.height = hs[k] + '%'; }, 40 + k*40); });
+    }
+    toast.classList.remove('on');
+    setTimeout(function(){ toastT.textContent = toasts[i][0]; toastS.textContent = toasts[i][1]; toast.classList.add('on'); }, 900);
+  }
+  function auto(){ clearInterval(timer); if (!userPaused && !reduce) timer = setInterval(function(){ show((cur + 1) % tabs.length); }, 4200); }
+  tabs.forEach(function(t,k){ t.addEventListener('click', function(){ userPaused = true; clearInterval(timer); show(k); setTimeout(function(){ userPaused = false; auto(); }, 12000); }); });
+  pillars.forEach(function(p,k){ p.style.cursor = 'pointer'; p.addEventListener('click', function(){ tabs[k].click(); }); });
+  show(0); auto();
+  document.addEventListener('visibilitychange', function(){ document.hidden ? clearInterval(timer) : auto(); });
+
+  /* avaliações do Google (conteúdo do widget atual, em HTML estático) */
+  var reviews = [
+    ['Alovisio Deucher Junior','1 ano atrás',''],
+    ['André Cantarelly','3 anos atrás',''],
+    ['erika espindola','3 anos atrás',''],
+    ['Gabriela Ribeiro','4 anos atrás',''],
+    ['Vitor Hugo (JacobBlack)','5 anos atrás',''],
+    ['Alberto Machado','7 anos atrás',''],
+    ['Leandro Soares','7 anos atrás',''],
+    ['Sâmela Dutra de Souza','7 anos atrás','Excelente profissionais, trabalho garantido e de qualidade!'],
+    ['Perecles Nogueira Barros','8 anos atrás','Ótima empresa de software de gerenciamento de empresas.']
+  ];
+  var colors = ['#1d3fa3','#0e7490','#7c3aed','#be123c','#047857','#b45309','#1d4ed8','#9333ea','#0f766e'];
+  var star = '<svg width="16" height="16"><use href="#i-star"/></svg>';
+  var rv = document.getElementById('reviews');
+  rv.innerHTML = reviews.map(function(r,k){
+    var ini = r[0].split(' ').filter(Boolean).slice(0,2).map(function(w){ return w[0].toUpperCase(); }).join('');
+    return '<article class="rev">' +
+      '<div class="rev-head"><span class="avatar" style="--c:' + colors[k % colors.length] + '">' + ini + '</span><div><strong>' + r[0] + '</strong><small>' + r[1] + '</small></div>' + document.getElementById('gIcon').innerHTML + '</div>' +
+      '<div class="rev-stars" aria-label="5 de 5 estrelas">' + star + star + star + star + star + '<svg class="ver" width="14" height="14"><use href="#i-verified"/></svg></div>' +
+      (r[2] ? '<p>' + r[2] + '</p>' : '<p class="muted">Avaliação 5 estrelas sem comentário.</p>') +
+    '</article>';
+  }).join('');
+  var prev = document.querySelector('.rev-nav.prev'), next = document.querySelector('.rev-nav.next');
+  function navState(){ prev.disabled = rv.scrollLeft < 8; next.disabled = rv.scrollLeft + rv.clientWidth > rv.scrollWidth - 8; }
+  function page(d){ rv.scrollBy({left: d * rv.clientWidth, behavior: reduce ? 'auto' : 'smooth'}); }
+  prev.addEventListener('click', function(){ page(-1); });
+  next.addEventListener('click', function(){ page(1); });
+  rv.addEventListener('scroll', navState, {passive:true}); window.addEventListener('resize', navState); navState();
+
+  /* revelar seções */
+  var rvl = [].slice.call(document.querySelectorAll('.reveal'));
+  if (hasIO && !reduce){
+    var rio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    rvl.forEach(function(el){ rio.observe(el); });
+  } else rvl.forEach(function(el){ el.classList.add('in'); });
+
+  /* formulários: o mesmo modelo no topo e no bloco final */
+  var tpl = document.getElementById('formTpl');
+  var qs = new URLSearchParams(location.search);
+  document.querySelectorAll('[data-form-slot]').forEach(function(slot){
+    var key = slot.dataset.formSlot;
+    slot.appendChild(tpl.content.cloneNode(true));
+    var form = slot.querySelector('form');
+    form.elements.origem_form.value = key;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(function(k){ if (qs.get(k)) form.elements[k].value = qs.get(k); });
+    slot.querySelectorAll('[data-for]').forEach(function(l){ var id = key + '-' + l.dataset.for; l.htmlFor = id; form.elements[l.dataset.for].id = id; });
+
+    var whats = form.elements.whatsapp;
+    whats.addEventListener('input', function(){
+      var d = whats.value.replace(/\D/g,'').slice(0,11), o = '';
+      if (d.length > 0) o = '(' + d.slice(0,2);
+      if (d.length >= 3) o += ') ' + d.slice(2, d.length > 10 ? 7 : 6);
+      if (d.length >= 7) o += '-' + d.slice(d.length > 10 ? 7 : 6);
+      whats.value = o;
+    });
+
+    function check(field){
+      var input = field.querySelector('input'), ok;
+      if (input.type === 'radio') ok = !!form.querySelector('input[name="' + input.name + '"]:checked');
+      else if (input.type === 'tel') ok = input.value.replace(/\D/g,'').length >= 10;
+      else ok = input.value.trim().length > 1;
+      field.classList.toggle('err', !ok);
+      return ok;
+    }
+    form.querySelectorAll('.ff').forEach(function(f){
+      f.addEventListener('change', function(){ if (f.classList.contains('err')) check(f); });
+      f.addEventListener('input', function(){ if (f.classList.contains('err')) check(f); });
+    });
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var first = null;
+      form.querySelectorAll('.ff').forEach(function(f){ if (!check(f) && !first) first = f; });
+      if (first){ first.querySelector('input').focus(); return; }
+      var data = Object.fromEntries(new FormData(form));
+      /* TODO implementação: enviar `data` para o RD Station e disparar o evento de conversão */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'generate_lead', form:'demonstracao_tms', posicao:key, frota:data.frota, faturamento:data.faturamento, desafio:data.desafio});
+      slot.classList.add('done');
+      slot.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    });
+  });
+
+  /* barra fixa no mobile: some quando um formulário está na tela */
+  var mbar = document.getElementById('mbar'), visible = 0;
+  function onScroll(){ mbar.classList.toggle('on', window.scrollY > 600 && visible === 0); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  if (hasIO){
+    var fio = new IntersectionObserver(function(es){ es.forEach(function(e){ visible += e.isIntersecting ? 1 : -1; if (visible < 0) visible = 0; }); onScroll(); }, {threshold:.1});
+    document.querySelectorAll('[data-form-slot]').forEach(function(s){ fio.observe(s); });
+  }
+  onScroll();
+})();
+</script>
+</body>
+</html>

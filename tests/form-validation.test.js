@@ -15,7 +15,7 @@ test('CNPJ inválido rejeita dígito verificador e sequências repetidas', () =>
 });
 
 test('telefone rejeita números repetidos, sequenciais e DDD inválido', () => {
-  for (const phone of ['(62) 99999-9999', '(11) 00000-0000', '(11) 12345-6789', '(00) 98435-2270']) {
+  for (const phone of ['(62) 99999-9999', '(11) 00000-0000', '(62) 90000-0001', '(11) 12345-6789', '(00) 98435-2270']) {
     assert.equal(validPhone(phone), false, phone);
   }
 });

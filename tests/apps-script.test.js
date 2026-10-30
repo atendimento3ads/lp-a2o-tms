@@ -46,6 +46,7 @@ test('não grava CNPJ, telefone ou e-mail inválido', () => {
   for (const changed of [
     {cnpj: '05.132.079/0001-29'},
     {whatsapp: '(62) 99999-9999'},
+    {whatsapp: '(62) 90000-0001'},
     {email: 'invalido'},
   ]) assert.equal(submit(context, {...base, ...changed}).success, false);
   assert.equal(rows.length, 1);

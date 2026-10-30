@@ -25,7 +25,7 @@
     if (number.length !== 10 && number.length !== 11) return false;
     if (!validAreaCodes.has(Number(number.slice(0, 2)))) return false;
     var local = number.slice(2);
-    if (/^(\d)\1+$/.test(local)) return false;
+    if (/(\d)\1{4,}/.test(local)) return false;
     if (local === '12345678' || local === '123456789' || local === '98765432' || local === '987654321') return false;
     return number.length === 11 ? local[0] === '9' : /^[2-5]/.test(local);
   }

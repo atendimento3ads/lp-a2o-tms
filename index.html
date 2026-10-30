@@ -7,6 +7,7 @@
 <meta name="description" content="Sistema TMS para transportadoras com emissão de CT-e, MDF-e, CIOT e NFS-e, operação, financeiro e plantão técnico 24h. Agende uma demonstração.">
 <!-- Protótipo no GitHub Pages: remover o noindex na publicação final -->
 <meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://produtos.a2osistemas.com.br/tms/">
 <meta name="theme-color" content="#06121f">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -75,9 +76,13 @@ p{margin:0}
   radial-gradient(45% 45% at 10% 55%,rgba(116,164,208,.08),transparent 70%);pointer-events:none}
 .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent);opacity:.5;pointer-events:none}
 .hero .wrap > *{min-width:0}
-.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:48px;align-items:center}
-.hero h1{font-size:clamp(34px,4.1vw,58px);text-transform:uppercase;margin:22px 0 22px;letter-spacing:-.03em;line-height:1.02}
-.hero .lead{font-size:18px;margin-bottom:32px}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:24px 48px;align-items:start}
+.hero .intro{grid-column:1;grid-row:1}
+.hero .hero-form{grid-column:2;grid-row:1 / span 2}
+.hero .demo{grid-column:1;grid-row:2}
+.hero .pillars{grid-column:1;grid-row:3}
+.hero h1{font-size:clamp(34px,3.7vw,52px);text-transform:uppercase;margin:18px 0 18px;letter-spacing:-.03em;line-height:1.02}
+.hero .lead{font-size:18px;margin-bottom:24px}
 .hero .lead strong{color:var(--text);font-weight:600}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
@@ -284,7 +289,7 @@ p{margin:0}
 .faq details p{padding:0 25px 25px;font-size:15px;line-height:1.6;color:var(--body)}
 
 /* formulário (bloco escuro + card branco, como o bloco final da LP atual) */
-.lead-top{padding:72px 0 190px}
+.lead-top{padding:80px 0 110px}
 .lead-final{padding:160px 0 120px}
 .lead-top .split,.lead-final .split{align-items:center}
 .bene{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:10px}
@@ -301,6 +306,7 @@ p{margin:0}
 .ff.full{grid-column:1/-1}
 .fl{font-size:15px;font-weight:600;line-height:1.1;color:#344054}
 .fl i{color:var(--blue);font-style:normal}
+.fl .optional{font-size:12px;font-weight:400;color:#667085}
 .fi{position:relative}
 .fi svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#98a2b3;pointer-events:none}
 .fi input{width:100%;height:48px;padding:0 16px 0 40px;background:#fff;border:1px solid #969da8;border-radius:15px;color:var(--ink);font:400 16px "Figtree",sans-serif;transition:border-color .2s,box-shadow .2s}
@@ -331,6 +337,8 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 .done-msg p{color:var(--gray)}
 .fcard.done form,.fcard.done > h3,.fcard.done > p{display:none}
 .fcard.done .done-msg{display:block}
+.form-status{min-height:1.4em;margin-top:12px;color:#b42318;font-size:13px;line-height:1.4}
+.fcard button[disabled]{cursor:wait;opacity:.7}
 
 /* rodapé */
 .footer{background:var(--navy-foot);color:rgba(255,255,255,.65);font-size:16px;line-height:1.5}
@@ -418,7 +426,8 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 }
 
 @media (max-width:1080px){
-  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:48px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:36px}
+  .hero .intro,.hero .hero-form,.hero .demo,.hero .pillars{grid-column:1;grid-row:auto}
   .toast{left:12px}
 }
 @media (max-width:760px){
@@ -457,6 +466,7 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
   <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
   <symbol id="i-building" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></g></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></g></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
   <symbol id="i-doc-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M10 12l4 4M14 12l-4 4"/></g></symbol>
   <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 114 0v2h4v4h-2a2 2 0 100 4h2v4h-4v-2a2 2 0 10-4 0v2H6v-4h2a2 2 0 100-4H6V6h4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -493,7 +503,7 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="intro">
       <span class="eyebrow">TMS para transportadoras <span>/ Gestão completa</span></span>
       <h1><span class="hl">Sistema TMS</span> para transportadoras que não podem parar.</h1>
       <p class="lead">Emita até <strong>90 mil CT-e por mês sem travar</strong>, com CT-e, MDF-e, CIOT e NFS-e no mesmo sistema da operação e do financeiro, e plantão técnico 24h.</p>
@@ -505,23 +515,18 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
         <li><svg width="16" height="16"><use href="#i-check-c"/></svg>Demonstração personalizada para sua operação</li>
         <li><svg width="16" height="16"><use href="#i-shield"/></svg>Sem compromisso comercial</li>
       </ul>
-      <div class="pillars" id="pillars">
-        <div class="pillar" data-p="0"><small>Pilar 01</small>TMS e Viagens</div>
-        <div class="pillar" data-p="1"><small>Pilar 02</small>Gestão de Frota</div>
-        <div class="pillar" data-p="2"><small>Pilar 03</small>Fiscal e SPED</div>
-        <div class="pillar" data-p="3"><small>Pilar 04</small>Financeiro e Acertos</div>
-      </div>
     </div>
 
-    <div class="demo" aria-label="Demonstração interativa do painel do A2O TMS">
+    <div class="fcard hero-form" id="demonstracao" data-form-slot="topo"></div>
+    <div class="demo" aria-label="Simulação ilustrativa e interativa de recursos do A2O TMS">
       <div class="demo-top">
-        <span class="status">Status: uma única operação centralizada</span>
-        <span class="pill">&#8635; Ver convergência</span>
+        <span class="status">Simulação ilustrativa do sistema</span>
+        <span class="pill">&#8635; Explore os módulos</span>
       </div>
       <div class="app">
         <div class="app-bar">
           <span class="dots"><i></i><i></i><i></i></span>
-          <span>app.a2otms.com.br / centro-operacional</span>
+          <span>Prévia de interface / centro operacional</span>
           <span class="ver">A2O TMS</span>
         </div>
         <div class="app-body">
@@ -597,6 +602,12 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
         <span class="ico"><svg width="14" height="14"><use href="#i-check"/></svg></span>
         <span><b id="toastT">MDF-e 008.923 autorizado</b><small id="toastS">SEFAZ · agora</small></span>
       </div>
+    </div>
+    <div class="pillars" id="pillars">
+      <div class="pillar" data-p="0"><small>Pilar 01</small>TMS e Viagens</div>
+      <div class="pillar" data-p="1"><small>Pilar 02</small>Gestão de Frota</div>
+      <div class="pillar" data-p="2"><small>Pilar 03</small>Fiscal e SPED</div>
+      <div class="pillar" data-p="3"><small>Pilar 04</small>Financeiro e Acertos</div>
     </div>
   </div>
 </section>
@@ -750,7 +761,7 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 </section>
 
 <!-- BLOCO FINAL COM FORMULÁRIO -->
-<section class="s on-dark lead-final" id="demonstracao">
+<section class="s on-dark lead-final" id="demonstracao-final">
   <div class="w split">
     <div class="reveal">
       <span class="kicker">Agende sua demonstração</span>
@@ -804,7 +815,7 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 
 <div class="mbar" id="mbar"><a class="b b-grad" href="#demonstracao" data-cta="mobile-bar">Agendar demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div>
 
-<!-- Formulário (usado no topo e no bloco final). Integrar com o RD Station na implementação. -->
+<!-- Formulário reutilizado no topo e no bloco final. A publicação depende do endpoint de leads confirmado. -->
 <template id="formTpl">
   <h3>Agende uma demonstração</h3>
   <p>Preencha os dados da sua operação para direcionarmos o especialista ideal.</p>
@@ -821,34 +832,21 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
         <div class="fi"><svg width="18" height="18"><use href="#i-building"/></svg><input name="empresa" type="text" placeholder="Nome da transportadora" autocomplete="organization" required></div>
         <span class="fm">Informe o nome da empresa.</span>
       </div>
+      <div class="ff">
+        <label class="fl" data-for="cnpj">CNPJ <i>*</i></label>
+        <div class="fi"><svg width="18" height="18"><use href="#i-building"/></svg><input name="cnpj" type="text" inputmode="numeric" maxlength="18" placeholder="00.000.000/0000-00" autocomplete="off" required></div>
+        <span class="fm">Informe um CNPJ válido.</span>
+      </div>
+      <div class="ff">
+        <label class="fl" data-for="email">E-mail <span class="optional">(opcional)</span></label>
+        <div class="fi"><svg width="18" height="18"><use href="#i-mail"/></svg><input name="email" type="email" placeholder="voce@empresa.com.br" autocomplete="email"></div>
+        <span class="fm">Confira o endereço de e-mail.</span>
+      </div>
       <div class="ff full">
         <label class="fl" data-for="whatsapp">WhatsApp <i>*</i></label>
         <div class="fi"><svg width="18" height="18"><use href="#i-phone"/></svg><input name="whatsapp" type="tel" inputmode="numeric" placeholder="(DDD) 99999-9999" autocomplete="tel-national" required></div>
-        <span class="fm">Informe um número com DDD.</span>
+        <span class="fm">Informe um número válido com DDD.</span>
       </div>
-      <fieldset class="ff full">
-        <legend class="fl">Quantidade de veículos (frota) <i>*</i></legend>
-        <div class="chips c5">
-          <label class="chip"><input type="radio" name="frota" value="Até 10" required><span>Até 10</span></label>
-          <label class="chip"><input type="radio" name="frota" value="11-30"><span>11–30</span></label>
-          <label class="chip"><input type="radio" name="frota" value="31-50"><span>31–50</span></label>
-          <label class="chip"><input type="radio" name="frota" value="51-100"><span>51–100</span></label>
-          <label class="chip"><input type="radio" name="frota" value="Mais de 100"><span>Mais de 100</span></label>
-        </div>
-        <span class="fm">Selecione o tamanho da frota.</span>
-      </fieldset>
-      <fieldset class="ff full">
-        <legend class="fl">Faturamento médio mensal <i>*</i></legend>
-        <div class="chips c3">
-          <label class="chip"><input type="radio" name="faturamento" value="Até R$ 500 mil" required><span>Até R$ 500 mil</span></label>
-          <label class="chip"><input type="radio" name="faturamento" value="R$ 500 mil a R$ 800 mil"><span>R$ 500 a 800 mil</span></label>
-          <label class="chip"><input type="radio" name="faturamento" value="R$ 800 mil a R$ 2 milhões"><span>R$ 800 mil a 2 mi</span></label>
-          <label class="chip"><input type="radio" name="faturamento" value="R$ 2 milhões a R$ 5 milhões"><span>R$ 2 a 5 milhões</span></label>
-          <label class="chip"><input type="radio" name="faturamento" value="Acima de R$ 5 milhões"><span>Acima de R$ 5 mi</span></label>
-          <label class="chip"><input type="radio" name="faturamento" value="Prefiro conversar"><span>Prefiro conversar</span></label>
-        </div>
-        <span class="fm">Selecione uma faixa de faturamento.</span>
-      </fieldset>
       <fieldset class="ff full">
         <legend class="fl">Principal desafio na operação atual <i>*</i></legend>
         <div class="chips c3">
@@ -863,15 +861,17 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
       </fieldset>
     </div>
     <button class="b b-grad" type="submit" data-cta="form">Quero ver o sistema funcionando <svg width="16" height="16"><use href="#i-arrow"/></svg></button>
-    <p class="legal"><svg width="14" height="14"><use href="#i-lock"/></svg><span>Seus dados são usados só para o contato sobre a demonstração, conforme a LGPD e a nossa <a href="https://a2osistemas.com.br/politica-de-privacidade/">Política de Privacidade</a>.</span></p>
+    <p class="form-status" role="alert" aria-live="polite"></p>
+    <p class="legal"><svg width="14" height="14"><use href="#i-lock"/></svg><span>Seus dados são usados só para o contato sobre a demonstração, conforme a LGPD e a nossa <a href="https://a2osistemas.com.br/politica-de-privacidade-termos-de-uso/">Política de Privacidade</a>.</span></p>
   </form>
   <div class="done-msg" role="status" aria-live="polite">
     <span class="ic"><svg width="30" height="30"><use href="#i-check"/></svg></span>
     <h3>Recebemos seus dados</h3>
-    <p>Um especialista da A2O retorna em até 1h útil para marcar o melhor horário da demonstração.</p>
+    <p>A equipe da A2O poderá entrar em contato para combinar a demonstração.</p>
   </div>
 </template>
 
+<script src="assets/form-validation.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -978,13 +978,18 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
       if (d.length >= 7) o += '-' + d.slice(d.length > 10 ? 7 : 6);
       whats.value = o;
     });
+    var cnpj = form.elements.cnpj;
+    cnpj.addEventListener('input', function(){ cnpj.value = A2OValidation.maskCnpj(cnpj.value); });
 
     function check(field){
       var input = field.querySelector('input'), ok;
       if (input.type === 'radio') ok = !!form.querySelector('input[name="' + input.name + '"]:checked');
-      else if (input.type === 'tel') ok = input.value.replace(/\D/g,'').length >= 10;
+      else if (input.name === 'cnpj') ok = A2OValidation.validCnpj(input.value);
+      else if (input.type === 'tel') ok = A2OValidation.validPhone(input.value);
+      else if (input.type === 'email') ok = !input.value.trim() || input.checkValidity();
       else ok = input.value.trim().length > 1;
       field.classList.toggle('err', !ok);
+      input.setAttribute('aria-invalid', String(!ok));
       return ok;
     }
     form.querySelectorAll('.ff').forEach(function(f){
@@ -992,17 +997,44 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
       f.addEventListener('input', function(){ if (f.classList.contains('err')) check(f); });
     });
 
-    form.addEventListener('submit', function(ev){
+    form.addEventListener('submit', async function(ev){
       ev.preventDefault();
+      if (form.dataset.sending === 'true') return;
       var first = null;
       form.querySelectorAll('.ff').forEach(function(f){ if (!check(f) && !first) first = f; });
       if (first){ first.querySelector('input').focus(); return; }
       var data = Object.fromEntries(new FormData(form));
-      /* TODO implementação: enviar `data` para o RD Station e disparar o evento de conversão */
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event:'generate_lead', form:'demonstracao_tms', posicao:key, frota:data.frota, faturamento:data.faturamento, desafio:data.desafio});
-      slot.classList.add('done');
-      slot.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+      form.dataset.submissionId = form.dataset.submissionId || (crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2,'0')).join(''));
+      data.submission_id = form.dataset.submissionId;
+      var button = form.querySelector('button[type="submit"]');
+      var status = form.querySelector('.form-status');
+      var controller = new AbortController();
+      var timeout = setTimeout(function(){ controller.abort(); }, 12000);
+      form.dataset.sending = 'true';
+      button.disabled = true;
+      status.textContent = 'Enviando sua solicitação…';
+      try {
+        /* O backend de leads deve ser configurado e validado antes da publicação. */
+        var response = await fetch('lead.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(data),
+          signal: controller.signal
+        });
+        var result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error('lead-not-confirmed');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event:'generate_lead', form:'demonstracao_tms', posicao:key});
+        slot.classList.add('done');
+        slot.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+      } catch (error) {
+        status.textContent = 'Não foi possível confirmar o envio. Tente novamente mais tarde.';
+      } finally {
+        clearTimeout(timeout);
+        delete form.dataset.sending;
+        button.disabled = false;
+      }
     });
   });
 

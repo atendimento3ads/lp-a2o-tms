@@ -13,7 +13,7 @@ Fonte: protótipo da 3ADS em `main`. A versão do GitHub Pages permanece com `no
 
 ## Formulário
 
-Dois pontos de captura usam o mesmo template. Nome, empresa, CNPJ, WhatsApp e principal desafio são obrigatórios; e-mail é opcional. O navegador valida os dígitos do CNPJ e rejeita telefones repetidos, sequenciais ou com DDD inválido. A validação deve ser repetida no servidor. O evento `generate_lead` só é emitido após resposta `{"success":true}` de `lead.php`.
+Um único formulário permanece no bloco final; a versão da hero foi removida. Nome, empresa, CNPJ, WhatsApp e principal desafio são obrigatórios; e-mail é opcional. O navegador valida os dígitos do CNPJ e rejeita telefones repetidos, sequenciais ou com DDD inválido. A validação deve ser repetida no servidor. O evento `generate_lead` só é emitido após resposta `{"success":true}` de `lead.php`.
 
 ## Verificação
 

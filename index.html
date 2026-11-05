@@ -11,7 +11,36 @@
 <meta name="theme-color" content="#06121f">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-<!-- GTM: inserir aqui, assíncrono, com Consent Mode v2 -->
+<!-- Consent Mode v2: estatísticas e marketing começam bloqueados até a escolha do visitante. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  try {
+    var savedConsent = JSON.parse(localStorage.getItem('a2o-cookie-consent-v1') || 'null');
+    if (savedConsent && savedConsent.expires > Date.now()) {
+      var consentState = savedConsent.choice === 'accepted' ? 'granted' : 'denied';
+      gtag('consent', 'update', {
+        ad_storage: consentState,
+        ad_user_data: consentState,
+        ad_personalization: consentState,
+        analytics_storage: consentState
+      });
+    }
+  } catch (error) {}
+</script>
+<!-- Google Tag Manager compartilhado com a2osistemas.com.br -->
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TB4FMDNH');
+</script>
 <style>
 @font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(assets/fonts/figtree-latin.woff2) format("woff2")}
 
@@ -355,6 +384,16 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 /* barra fixa mobile */
 .mbar{display:none}
 
+/* consentimento de cookies */
+.cookie-consent{position:fixed;left:20px;bottom:20px;z-index:80;width:min(440px,calc(100vw - 40px));padding:20px;background:#fff;color:#344054;border:1px solid #d0d5dd;border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.28);font-size:14px;line-height:1.5}
+.cookie-consent[hidden]{display:none}
+.cookie-consent p{margin:0 0 16px}
+.cookie-consent a{color:#063c94;text-decoration:underline}
+.cookie-consent-actions{display:flex;flex-wrap:wrap;gap:10px}
+.cookie-consent-actions button{min-height:42px;padding:9px 16px;border:1px solid #063c94;border-radius:8px;font:700 14px/1.2 "Figtree",sans-serif;cursor:pointer}
+.cookie-consent-actions button:first-child{background:#063c94;color:#fff}
+.cookie-consent-actions button:last-child{background:#fff;color:#063c94}
+
 /* responsivo das seções clonadas */
 @media (max-width:1080px){
   .split{grid-template-columns:1fr;gap:50px}
@@ -454,6 +493,7 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB4FMDNH" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 
 <!-- Ícones -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -812,6 +852,39 @@ fieldset.ff legend{padding:0;margin-bottom:8px}
 </footer>
 
 <div class="mbar" id="mbar"><a class="b b-grad" href="#demonstracao" data-cta="mobile-bar">Agendar demonstração <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div>
+
+<section class="cookie-consent" id="cookieConsent" aria-label="Preferências de cookies" aria-describedby="cookieConsentMessage" hidden>
+  <p id="cookieConsentMessage">Para proporcionar uma melhor experiência, usamos tecnologias como cookies para armazenar e/ou acessar informações do dispositivo. O consentimento com essas tecnologias nos permite processar dados como comportamento da navegação ou IDs exclusivos neste site. O não consentimento ou a revogação do consentimento pode afetar determinados recursos. <a href="https://a2osistemas.com.br/politica-de-privacidade-termos-de-uso/" target="_blank" rel="noopener noreferrer">Leia nossa Política de Privacidade e Termos de Uso</a>.</p>
+  <div class="cookie-consent-actions">
+    <button type="button" data-consent-accept>Aceitar</button>
+    <button type="button" data-consent-reject>Rejeitar</button>
+  </div>
+</section>
+<script>
+  (function(){
+    var banner = document.getElementById('cookieConsent');
+    if (!banner) return;
+    var key = 'a2o-cookie-consent-v1';
+    var saved;
+    try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch (error) {}
+    if (!saved || saved.expires <= Date.now()) banner.hidden = false;
+    function choose(accepted) {
+      var state = accepted ? 'granted' : 'denied';
+      gtag('consent', 'update', {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state
+      });
+      try {
+        localStorage.setItem(key, JSON.stringify({choice: accepted ? 'accepted' : 'rejected', expires: Date.now() + 31536000000}));
+      } catch (error) {}
+      banner.hidden = true;
+    }
+    banner.querySelector('[data-consent-accept]').addEventListener('click', function(){ choose(true); });
+    banner.querySelector('[data-consent-reject]').addEventListener('click', function(){ choose(false); });
+  })();
+</script>
 
 <!-- Formulário exibido apenas no bloco final. A publicação depende do endpoint de leads confirmado. -->
 <template id="formTpl">

@@ -63,13 +63,17 @@ foreach (['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gcl
     if (strlen($lead[$key]) > 250) respond(422, false);
 }
 
-// O URL do Apps Script permanece fora da pasta pública e do Git.
+// O webhook do Make permanece fora da pasta pública e do Git.
 $configPath = '/home2/hg3ads37/.config/a2o-tms-leads.php';
 if (!is_file($configPath)) respond(503, false);
 $config = require $configPath;
-$url = $config['web_app_url'] ?? '';
-if (!is_string($url) || !preg_match('~^https://script\.google\.com/macros/s/[^/]+/exec$~', $url)) respond(503, false);
+$url = $config['make_webhook_url'] ?? '';
+if (!is_string($url) || !preg_match('~^https://hook\.us2\.make\.com/[a-z0-9]{32,64}$~i', $url)) respond(503, false);
 if (!function_exists('curl_init')) respond(503, false);
+
+// O formulário coleta DDD e número local; o Make recebe o padrão internacional só com dígitos.
+$phone = digits($lead['whatsapp']);
+$lead['whatsapp'] = '55' . $phone;
 
 $curl = curl_init($url);
 if ($curl === false) respond(503, false);
@@ -78,15 +82,12 @@ curl_setopt_array($curl, [
     CURLOPT_POSTFIELDS => json_encode($lead, JSON_THROW_ON_ERROR),
     CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_MAXREDIRS => 3,
+    CURLOPT_FOLLOWLOCATION => false,
     CURLOPT_CONNECTTIMEOUT => 5,
     CURLOPT_TIMEOUT => 10,
 ]);
 $body = curl_exec($curl);
 $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
-if (!is_string($body) || $status !== 200) respond(502, false);
-$result = json_decode($body, true);
-if (!is_array($result) || ($result['success'] ?? null) !== true) respond(502, false);
+if (!is_string($body) || $status < 200 || $status >= 300) respond(502, false);
 respond(200, true);
